@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# Project specific
+data/
+*.db
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
