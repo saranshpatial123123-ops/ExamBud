@@ -1,0 +1,191 @@
+ACADEMIC INTELLIGENCE PLATFORM 
+  --------------------------------------------
+  1. PRODUCT SUMMARY
+  --------------------------------------------
+  The Academic Intelligence Platform is an
+  AI-powered academic operating system that
+  ingests educational content (documents,
+  lectures, audio, slides), builds structured
+  knowledge graphs, tracks concept-level
+  mastery for students, and generates adaptive
+  study plans, practice problems, and exam
+  simulations.
+
+  The system serves both students and
+  institutions:
+
+  Students get: - AI tutor - personalized
+  study plans - adaptive practice - exam
+  simulations
+
+  Institutions get: - learning analytics -
+  concept difficulty insights - student
+  mastery tracking
+  --------------------------------------------
+
+2. PROBLEM
+
+Students struggle with: - scattered study materials - inefficient study
+planning - weak concept diagnosis - poor revision strategies
+
+Institutions struggle with: - identifying difficult topics - measuring
+learning outcomes - tracking academic readiness
+
+Most AI tools only provide simple “chat with PDF” functionality and do
+not understand academic structure.
+
+  --------------------------------------------
+  3. SOLUTION
+  --------------------------------------------
+  Build an AI system that understands:
+
+  course → topics → concepts → mastery
+
+  The platform: - ingests academic content -
+  builds knowledge graphs - tracks concept
+  mastery - generates study plans - produces
+  practice exams - provides institutional
+  analytics
+  --------------------------------------------
+
+4. TARGET USERS
+
+Primary Users Students: - university students - high school students -
+exam preparation learners
+
+Secondary Users Institutions: - universities - coaching institutes -
+online course providers
+
+  ------------------
+  5. CORE FEATURES
+  ------------------
+
+5.1 Universal Knowledge Ingestion
+
+Supported inputs: - PDF - PPTX - DOCX - TXT - CSV - Images (OCR) -
+Audio - Video lectures
+
+Video pipeline: video → audio extraction → transcription → slide OCR →
+merge speech + slide text → embeddings → vector database
+
+Optimizations: - duplicate frame detection - slide text deduplication -
+timestamp alignment - SHA256 file deduplication
+
+------------------------------------------------------------------------
+
+5.2 Knowledge Graph
+
+Topic Dependency Graph Defines prerequisite relationships between
+topics.
+
+Example: Processes → prerequisite → Deadlocks
+
+Concept Graph Breaks topics into atomic learning concepts.
+
+Example: Deadlocks - mutual exclusion - hold and wait - no preemption -
+circular wait
+
+Each concept stores: - difficulty score - prerequisite relationships
+
+------------------------------------------------------------------------
+
+5.3 Hybrid Retrieval Engine
+
+Search methods: - vector search - BM25 lexical search - reranking
+
+Strict filtering by: - course - subject - lecture - topic
+
+------------------------------------------------------------------------
+
+5.4 Student Intelligence Layer
+
+Concept mastery tracking per student.
+
+Example: mutual_exclusion: 0.82 circular_wait: 0.28
+
+Update rules: correct answer → +0.05 incorrect answer → -0.02
+
+Spaced repetition decay: -0.002 per day after 7 days inactivity.
+
+Student memory stored as: data/memory_cache/{student_id}.json
+
+------------------------------------------------------------------------
+
+5.5 Academic Planner
+
+Generates study plans based on: - exam dates - topic difficulty -
+concept mastery - course timelines
+
+Capabilities: - daily goals - missed task carryover - workload
+balancing - emergency schedule compression
+
+------------------------------------------------------------------------
+
+5.6 Practice Engine
+
+Generates adaptive practice questions.
+
+Each question contains: concept_tags
+
+Example: [“circular_wait”]
+
+Concept mastery updates after answers.
+
+------------------------------------------------------------------------
+
+5.7 Exam Simulator
+
+Creates mock exams with: - balanced concept coverage - focus on weak
+topics - readiness scoring
+
+Exam results feed back into mastery tracking.
+
+------------------------------------------------------------------------
+
+5.8 Notification Engine
+
+Triggers alerts such as: - assignment due soon - quiz upcoming -
+revision recommended - mastery dropping
+
+------------------------------------------------------------------------
+
+5.9 Institutional Analytics
+
+Instructor dashboards include: - average concept mastery - concept
+difficulty heatmaps - struggling students - readiness metrics
+
+  ------------------------
+  6. SYSTEM ARCHITECTURE
+  ------------------------
+
+Core modules:
+
+backend/ - ingestion - processing - knowledge_graph - retrieval -
+intelligence - planning - timeline - learning_state - analytics -
+notifications - tasks
+
+Heavy processing handled by asynchronous background tasks.
+
+  --------------------
+  7. SUCCESS METRICS
+  --------------------
+
+Student Metrics - daily engagement - improved concept mastery - exam
+readiness scores
+
+Institution Metrics - reduced failure rates - improved concept
+understanding - better curriculum insights
+
+  --------------
+  8. MVP SCOPE
+  --------------
+
+Included in MVP: - multimodal ingestion - knowledge graph construction -
+hybrid retrieval - concept mastery tracking - academic planner -
+practice generation - exam simulator - analytics API
+
+Frontend interface will be built in the next phase.
+
+------------------------------------------------------------------------
+
+END OF DOCUMENT
