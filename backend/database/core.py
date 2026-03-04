@@ -1,6 +1,6 @@
 from langchain_community.vectorstores import Chroma
-from .embeddings import get_embeddings_model
-from .config import settings
+from backend.embeddings.embeddings import get_embeddings_model
+from backend.config import settings
 
 def get_vector_store() -> Chroma:
     """
@@ -35,3 +35,31 @@ def get_all_documents() -> dict:
     """
     vector_store = get_vector_store()
     return vector_store.get()
+
+def get_unique_metadata(field_name: str, filters: dict = None) -> list[str]:
+    """
+    Retrieves unique values for a specific metadata field, optionally constrained by other filters.
+    Used for building directory browsing endpoints.
+    """
+    vector_store = get_vector_store()
+    kwargs = {"include": ["metadatas"]}
+    if filters:
+        kwargs["where"] = filters
+        
+    results = vector_store.get(**kwargs)
+    
+    unique_vals = set()
+    for meta in results.get("metadatas", []):
+        if field_name in meta and meta[field_name]:
+            unique_vals.add(meta[field_name])
+            
+    return sorted(list(unique_vals))
+
+def get_chunks_by_metadata(filters: dict) -> list[str]:
+    """
+    Retrieves all document chunks that match the given metadata filters.
+    Used for syllabus reconstruction and topic graphing.
+    """
+    vector_store = get_vector_store()
+    results = vector_store.get(where=filters, include=["documents"])
+    return results.get("documents", [])

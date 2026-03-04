@@ -1,6 +1,6 @@
-from .database import get_vector_store
+from backend.database.core import get_vector_store
 
-def retrieve_chunks(query: str, k: int = 10, distance_threshold: float = 1.0) -> list[dict]:
+def retrieve_chunks(query: str, k: int = 10, distance_threshold: float = 1.0, metadata_filter: dict = None) -> list[dict]:
     """
     Retrieve top k most relevant chunks from the vector database.
     Note: ChromaDB by default returns L2 squared distance where 0.0 means identical, 
@@ -9,7 +9,12 @@ def retrieve_chunks(query: str, k: int = 10, distance_threshold: float = 1.0) ->
     vector_store = get_vector_store()
     
     # Standard similarity search with score (L2 distance from ChromaDB)
-    results = vector_store.similarity_search_with_score(query, k=k)
+    # We pass the metadata_filter natively as a 'filter' kwarg to ChromaDB
+    kwargs = {"k": k}
+    if metadata_filter:
+        kwargs["filter"] = metadata_filter
+        
+    results = vector_store.similarity_search_with_score(query, **kwargs)
     
     retrieved_chunks = []
     for doc, distance in results:

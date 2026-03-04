@@ -12,6 +12,8 @@ class Settings(BaseSettings):
     
     # For OpenAI usage
     OPENAI_API_KEY: str = ""
+    
+    MAX_UPLOAD_SIZE: int = 1024 * 1024 * 1024  # 1GB default limit
 
 settings = Settings()
 

@@ -1,5 +1,5 @@
-from .config import settings
-from .retrieval import retrieve_chunks
+from backend.config import settings
+from backend.retrieval.hybrid_retrieval import hybrid_retrieve
 
 def get_llm():
     """
@@ -45,20 +45,20 @@ Condensed Context:"""
     except Exception as e:
         return f"Context compression error: {str(e)}"
 
-def generate_answer(query: str) -> dict:
+def generate_answer(query: str, metadata_filter: dict = None) -> dict:
     """
-    1. Retrieve relevant chunks from the database
+    1. Retrieve relevant chunks from the database (optionally constrained by metadata) using Hybrid Pipeline
     2. Condense the context (Summarization)
     3. Construct the final RAG Prompt
     4. Generate the answer using the LLM
     """
-    # Retrieve top 10 chunks, using distance_threshold parameter handled in retrieval.py (L2, lower is better)
-    chunks = retrieve_chunks(query, k=10, distance_threshold=1.0)
+    # Retrieve top 5 chunks out of 20 via hybrid retrieval pipeline
+    chunks = hybrid_retrieve(query, metadata_filter=metadata_filter, initial_k=20, final_k=5)
     
     if not chunks:
         # Handled the case where no chunks passed the threshold
         return {
-            "answer": "I couldn't find this in the uploaded materials.",
+            "answer": "I couldn't find this in the uploaded materials. Please check your course scope or upload materials.",
             "sources": []
         }
         
@@ -70,7 +70,7 @@ def generate_answer(query: str) -> dict:
     # If the LLM determined there was no relevant information during compression
     if "no relevant information found" in condensed_context.lower():
         return {
-            "answer": "I couldn't find this in the uploaded materials.",
+            "answer": "I couldn't find this in the uploaded materials. Please check your course scope or upload materials.",
             "sources": []
         }
         
@@ -80,8 +80,14 @@ def generate_answer(query: str) -> dict:
         sources.append({
             "source_filename": chunk["metadata"].get("source_filename", "Unknown"),
             "chunk_index": chunk["metadata"].get("chunk_index", -1),
-            "score": chunk["score"],
-            "chunk_text": chunk["content"]
+            "institute": chunk["metadata"].get("institute", ""),
+            "branch": chunk["metadata"].get("branch", ""),
+            "semester": chunk["metadata"].get("semester", ""),
+            "subject": chunk["metadata"].get("subject", ""),
+            "similarity_score": chunk.get("score"),
+            "reranking_score": chunk.get("reranking_score"),
+            "source_type": chunk.get("source_type", "unknown"),
+            "chunk_text": chunk.get("content", "")
         })
     
     # Final Generation 

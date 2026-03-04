@@ -1,5 +1,5 @@
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from .config import settings
+from backend.config import settings
 
 def get_embeddings_model():
     """
