@@ -2,6 +2,15 @@ from langchain_community.vectorstores import Chroma
 from backend.embeddings.embeddings import get_embeddings_model
 from backend.config import settings
 
+def build_chroma_filter(filters: dict) -> dict:
+    if not filters:
+        return {}
+    keys = list(filters.keys())
+    if len(keys) == 1:
+        return {keys[0]: filters[keys[0]]}
+    return {"$and": [{k: v} for k, v in filters.items()]}
+
+
 def get_vector_store() -> Chroma:
     """
     Initializes and returns the Chroma vector store.
@@ -44,7 +53,7 @@ def get_unique_metadata(field_name: str, filters: dict = None) -> list[str]:
     vector_store = get_vector_store()
     kwargs = {"include": ["metadatas"]}
     if filters:
-        kwargs["where"] = filters
+        kwargs["where"] = build_chroma_filter(filters)
         
     results = vector_store.get(**kwargs)
     
@@ -61,5 +70,5 @@ def get_chunks_by_metadata(filters: dict) -> list[str]:
     Used for syllabus reconstruction and topic graphing.
     """
     vector_store = get_vector_store()
-    results = vector_store.get(where=filters, include=["documents"])
+    results = vector_store.get(where=build_chroma_filter(filters), include=["documents"])
     return results.get("documents", [])

@@ -1,0 +1,1 @@
+This is a test document about deadlocks in operating systems. Deadlocks occur when multiple processes are blocked because each process is holding a resource and waiting for another resource acquired by some other process.

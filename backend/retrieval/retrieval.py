@@ -12,7 +12,8 @@ def retrieve_chunks(query: str, k: int = 10, distance_threshold: float = 1.0, me
     # We pass the metadata_filter natively as a 'filter' kwarg to ChromaDB
     kwargs = {"k": k}
     if metadata_filter:
-        kwargs["filter"] = metadata_filter
+        from backend.database.core import build_chroma_filter
+        kwargs["filter"] = build_chroma_filter(metadata_filter)
         
     results = vector_store.similarity_search_with_score(query, **kwargs)
     

@@ -7,7 +7,7 @@ from backend.config import settings
 from backend.intelligence.mastery_engine import load_student_mastery, update_topic_mastery
 from backend.retrieval.hybrid_retrieval import hybrid_retrieve
 from backend.knowledge_graph.concept_graph import load_concept_graph
-from langchain_community.chat_models import ChatOpenAI
+from backend.utils.llm_provider import get_llm
 from langchain.prompts import PromptTemplate
 
 def get_tutor_session_filepath(student_id: str, session_id: str) -> str:
@@ -40,7 +40,7 @@ def generate_tutor_session(student_id: str, institute: str, branch: str, semeste
         "subject": subject.lower().strip()
     }
     retrieved_chunks = hybrid_retrieve(topic, metadata_filter, initial_k=15, final_k=3)
-    context_text = "\n\n".join([chunk["chunk_text"] for chunk in retrieved_chunks])
+    context_text = "\n\n".join([chunk.get("content", "") for chunk in retrieved_chunks])
     
     # Prerequisite recovery check (Inform LLM to focus on basics if failing)
     prereq_warning = ""
@@ -55,7 +55,7 @@ def generate_tutor_session(student_id: str, institute: str, branch: str, semeste
             prereq_warning = f"\nThe student is struggling (Mastery: {mastery}). Explicitly relate the explanation back to these prerequisites: {', '.join(prereqs)}."
 
     # 3. LLM Generation
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.3)
+    llm = get_llm()
     
     prompt = PromptTemplate(
         input_variables=["topic", "difficulty", "context", "prereq"],
@@ -97,7 +97,7 @@ Course Material:
     })
     
     try:
-        content = response.content
+        content = response.content if hasattr(response, 'content') else str(response)
         if "```json" in content:
             content = content.split("```json")[1].split("```")[0].strip()
         elif "```" in content:

@@ -14,6 +14,10 @@ app.include_router(routes_ingestion.router)
 app.include_router(routes_rag.router)
 app.include_router(routes_study.router)
 
+@app.get("/")
+def root():
+    return {"service": "ExamBud Academic Intelligence API", "status": "running"}
+
 @app.get("/health")
 def health_check():
     return {"status": "ok", "message": "Engine running actively."}

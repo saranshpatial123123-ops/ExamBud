@@ -2,7 +2,7 @@ import json
 import os
 from backend.config import settings
 from backend.database.core import get_chunks_by_metadata
-from backend.rag.rag import get_llm
+from backend.utils.llm_provider import get_llm
 
 def generate_topic_graph(institute: str, branch: str, semester: str, subject: str) -> dict:
     """
@@ -98,3 +98,7 @@ Course Materials:
         json.dump(parsed_json, f, indent=2)
         
     return parsed_json
+
+def load_topic_graph(institute: str, branch: str, semester: str, subject: str) -> dict:
+    # Stub added to resolve missing import error
+    return {"message": "Not implemented yet"}

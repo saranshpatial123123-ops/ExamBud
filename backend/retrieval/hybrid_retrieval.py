@@ -26,7 +26,8 @@ def get_bm25_results(query: str, metadata_filter: dict, k: int = 10) -> list[dic
         
         kwargs = {"include": ["documents", "metadatas"]}
         if metadata_filter:
-            kwargs["where"] = metadata_filter
+            from backend.database.core import build_chroma_filter
+            kwargs["where"] = build_chroma_filter(metadata_filter)
             
         results = vector_store.get(**kwargs)
         documents = results.get("documents", [])

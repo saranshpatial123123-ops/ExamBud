@@ -1,4 +1,4 @@
-from backend.rag.rag import get_llm
+from backend.utils.llm_provider import get_llm
 
 def rewrite_query(original_query: str, max_rewrites: int = 2) -> list[str]:
     """

@@ -1,26 +1,6 @@
 from backend.config import settings
 from backend.retrieval.hybrid_retrieval import hybrid_retrieve
-
-def get_llm():
-    """
-    Initializes the LLM. Falls back to a local HuggingFace model if OpenAI API Key is not set.
-    """
-    if settings.OPENAI_API_KEY:
-        from langchain_openai import ChatOpenAI
-        return ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0, openai_api_key=settings.OPENAI_API_KEY)
-    else:
-        # Fallback to local HuggingFace pipeline for text generation. 
-        # Using flan-t5-base as a lightweight instruction-following model.
-        from langchain_community.llms.huggingface_pipeline import HuggingFacePipeline
-        from transformers import pipeline
-        
-        pipe = pipeline(
-            "text2text-generation", 
-            model="google/flan-t5-base", 
-            max_new_tokens=512,
-            model_kwargs={"temperature": 0.0}
-        )
-        return HuggingFacePipeline(pipeline=pipe)
+from backend.utils.llm_provider import get_llm
 
 def condense_context(query: str, chunks: list, llm) -> str:
     """

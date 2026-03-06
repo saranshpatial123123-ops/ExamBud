@@ -7,7 +7,7 @@ from backend.config import settings
 from backend.intelligence.mastery_engine import load_student_mastery
 from backend.retrieval.hybrid_retrieval import hybrid_retrieve
 from backend.knowledge_graph.topic_graph import load_topic_graph
-from langchain_community.chat_models import ChatOpenAI
+from backend.utils.llm_provider import get_llm
 from langchain.prompts import PromptTemplate
 
 def generate_exam(student_id: str, institute: str, branch: str, semester: str, subject: str, exam_duration: int, question_count: int) -> dict:
@@ -56,7 +56,7 @@ def generate_exam(student_id: str, institute: str, branch: str, semester: str, s
     
     # We pull a broad conceptual chunk range across the course rather than micro-looping RAG per question
     retrieved_chunks = hybrid_retrieve(f"Core concepts of {subject}", metadata_filter, initial_k=30, final_k=10)
-    context_text = "\n\n".join([chunk["chunk_text"] for chunk in retrieved_chunks])
+    context_text = "\n\n".join([chunk.get("content", "") for chunk in retrieved_chunks])
     
     if len(context_text) > 15000:
         context_text = context_text[:15000]
@@ -64,7 +64,7 @@ def generate_exam(student_id: str, institute: str, branch: str, semester: str, s
     topics_str = ", ".join(list(set(selected_topics)))
     
     # 3. LLM Generation
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.5)
+    llm = get_llm()
     
     prompt = PromptTemplate(
         input_variables=["subject", "count", "topics", "context"],
@@ -105,7 +105,7 @@ Course Material context to draw facts from:
     })
     
     try:
-        content = response.content
+        content = response.content if hasattr(response, 'content') else str(response)
         if "```json" in content:
             content = content.split("```json")[1].split("```")[0].strip()
         elif "```" in content:

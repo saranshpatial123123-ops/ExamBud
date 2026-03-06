@@ -1,7 +1,7 @@
 import json
 from backend.retrieval.hybrid_retrieval import hybrid_retrieve
 from backend.intelligence.difficulty_controller import compute_tutor_difficulty
-from langchain_community.chat_models import ChatOpenAI
+from backend.utils.llm_provider import get_llm
 from langchain.prompts import PromptTemplate
 
 def generate_practice_set(student_id: str, institute: str, branch: str, semester: str, subject: str, topic: str, count: int = 5) -> dict:
@@ -22,9 +22,9 @@ def generate_practice_set(student_id: str, institute: str, branch: str, semester
     if not retrieved_chunks:
         raise ValueError("No course data found to generate practice questions.")
         
-    context_text = "\n\n".join([chunk["chunk_text"] for chunk in retrieved_chunks])
+    context_text = "\n\n".join([chunk.get("content", "") for chunk in retrieved_chunks])
     
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.4)
+    llm = get_llm()
     
     prompt = PromptTemplate(
         input_variables=["topic", "difficulty", "context", "count"],
@@ -66,7 +66,7 @@ Course Material:
     })
     
     try:
-        content = response.content
+        content = response.content if hasattr(response, 'content') else str(response)
         if "```json" in content:
             content = content.split("```json")[1].split("```")[0].strip()
         elif "```" in content:

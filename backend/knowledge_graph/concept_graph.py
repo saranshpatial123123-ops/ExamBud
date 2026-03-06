@@ -55,3 +55,11 @@ concept_graph.add_concept(ConceptNode(
     difficulty=0.72,
     prerequisites=["mutual_exclusion", "hold_and_wait"]
 ))
+
+def generate_concept_graph(institute: str, branch: str, semester: str, subject: str) -> dict:
+    # Stub added to resolve missing import error
+    return {"message": "Not implemented yet"}
+
+def load_concept_graph(institute: str, branch: str, semester: str, subject: str) -> dict:
+    # Stub added to resolve missing import error
+    return {"message": "Not implemented yet"}
