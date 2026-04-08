@@ -1,0 +1,64 @@
+.scroll-list-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-list {
+  height: 100%;
+  overflow-y: auto;
+  padding: 8px 16px;
+  /* Hide scrollbar visually, keep scroll functional */
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE/Edge */
+}
+
+.scroll-list::-webkit-scrollbar {
+  display: none;               /* Chrome/Safari/Opera */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.item {
+  width: 100%;
+}
+
+.item-text {
+  color: white;
+  margin: 0;
+}
+
+.top-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, #171717, transparent);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to top, #171717, transparent);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}

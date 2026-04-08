@@ -1,0 +1,24 @@
+.scroll-stack-scroller {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.scroll-stack-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-stack-inner {
+  width: 100%;
+  position: relative;
+  padding-bottom: 50vh; /* space for scrolling to the end */
+}
+
+.scroll-stack-card {
+  position: relative;
+  width: 100%;
+}
+
+.scroll-stack-end {
+  height: 1px;
+}

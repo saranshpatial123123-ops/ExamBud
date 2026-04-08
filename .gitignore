@@ -1,21 +1,39 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
+# Unified .gitignore for ExamBud
 
-# Virtual Environment
+# General / OS
+.DS_Store
+Thumbs.db
+*.log
+.env
+*.local
+
+# Virtual Environment (Root & Subfolders)
+.venv/
 venv/
 env/
 ENV/
-.venv/
 
-# Project specific
-data/
-*.db
-.env
-*.log
+# Python / Backend
+ai-study-engine/__pycache__/
+ai-study-engine/*.py[cod]
+ai-study-engine/*$py.class
+ai-study-engine/*.so
+ai-study-engine/data/
+ai-study-engine/*.db
 
-# OS files
-.DS_Store
-Thumbs.db
+# Node / Frontend
+frontend-dashboard/node_modules/
+frontend-dashboard/dist/
+frontend-dashboard/dist-ssr/
+frontend-dashboard/error.log
+frontend-dashboard/logs
+
+# IDEs
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
