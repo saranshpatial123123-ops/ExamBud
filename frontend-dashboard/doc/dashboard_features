@@ -1,0 +1,116 @@
+
+
+## 📊 Academic Dashboard & Progress Visualization
+
+ExamBud provides a real-time, interactive dashboard that converts learning activity into clear, actionable insights.
+It serves as a centralized control system for tracking progress, managing time, and executing study tasks.
+
+---
+
+### 🧭 Subject Mastery
+
+* Radial progress indicators for each subject
+* Percentage-based mastery representation
+* Color-coded levels:
+
+  * Green → Strong understanding
+  * Yellow → Moderate progress
+  * Red → Needs improvement
+* Smooth updates based on real-time performance
+
+---
+
+### ⏱️ Study Timer
+
+* Central countdown timer for focused sessions
+* Displays active subject and task
+* Supports structured study methods (e.g., Pomodoro)
+* Visual urgency indicators as time approaches completion
+
+---
+
+### 📌 Active Focus
+
+* Highlights the current subject or task
+* Keeps the user anchored to a single objective
+* Reduces context switching and distraction
+
+---
+
+### 📋 Task Management
+
+* Structured daily task cards with:
+
+  * Topic
+  * Description
+  * Learning objective
+
+* Status states:
+
+  * Completed
+  * In Progress
+  * Incomplete
+  * Deferred
+
+* Visual prioritization based on importance
+
+---
+
+### 📈 Real-Time Feedback
+
+* Updates dynamically based on user activity
+* Adjusts mastery levels automatically
+* Surfaces weak areas for targeted improvement
+
+---
+
+### 🧭 Navigation Taskbar
+
+A floating taskbar provides quick access to core features without interrupting workflow.
+
+* Appears contextually and remains hidden when not needed
+
+* Enables fast navigation across:
+
+  * Home
+  * Tasks
+  * Calendar
+  * Study Modules
+  * Notes
+  * Settings
+
+* Designed with a minimal, icon-based interface
+
+* Uses subtle visual feedback for interaction
+
+---
+
+### 🎨 Interface Design
+
+* Dark theme optimized for long study sessions
+* Clean layout with minimal distractions
+* Smooth transitions and interaction feedback
+* Consistent visual hierarchy across components
+
+---
+
+### 🧠 Design Principles
+
+* Immediate feedback improves engagement
+* Visible progress increases motivation
+* Time awareness improves discipline
+* Focused workflow reduces cognitive overload
+
+---
+
+### 🔥 Summary
+
+The dashboard acts as a real-time academic control layer, helping students:
+
+* Monitor progress
+* Maintain focus
+* Manage study time
+* Improve weak areas efficiently
+
+---
+
