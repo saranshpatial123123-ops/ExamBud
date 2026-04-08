@@ -297,10 +297,10 @@ Language Model (LLM Layer)
 
 ## 📚 Documentation
 
-* Backend Architecture → docs/BACKEND_ARCHITECTURE.md
-* Backend Features → docs/BACKEND_FEATURES.md
-* Dashboard Frontend Architecture-> docs/architecture.md
-* Dashboard Frontend Features-> docs/dashboard_features.md
+* Backend Architecture → ai-study-engine/docs/BACKEND_ARCHITECTURE.md
+* Backend Features → ai-study-engine/docs/BACKEND_FEATURES.md
+* Dashboard Frontend Architecture-> frontend_dashboard/docs/architecture.md
+* Dashboard Frontend Features-> frontend_dashboard/docs/dashboard_features.md
 
 ---
 
