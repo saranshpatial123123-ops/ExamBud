@@ -299,6 +299,8 @@ Language Model (LLM Layer)
 
 * Backend Architecture → docs/BACKEND_ARCHITECTURE.md
 * Backend Features → docs/BACKEND_FEATURES.md
+* Dashboard Frontend Architecture-> docs/architecture.md
+* Dashboard Frontend Features-> docs/dashboard_features.md
 
 ---
 
