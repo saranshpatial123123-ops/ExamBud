@@ -1,136 +1,325 @@
-# ExamBud
 
-## AI-Powered Academic Intelligence Platform
+# 🚀 ExamBud
 
-ExamBud is an AI-powered academic intelligence platform that converts
-raw academic materials into an interactive learning system.
 
-The platform combines Retrieval Augmented Generation (RAG), hybrid
-search, knowledge graphs, and adaptive learning to help students study
-more effectively and help institutions improve academic outcomes.
+  <b>AI-Powered Academic Intelligence Platform</b><br>
+  Transform raw academic content into an intelligent learning system
 
-------------------------------------------------------------------------
 
-# Problem
+## ⚡ Overview
 
-Students face several challenges in modern education:
+ExamBud is an **AI-powered academic intelligence platform** designed to bridge the gap between *content availability* and *actual understanding*.
 
--   Information overload from lectures, notes, and assignments
--   Lack of personalized learning
--   Poor study planning before exams
--   Weak conceptual understanding
--   Limited feedback on learning progress
+Instead of acting as a passive storage system, ExamBud actively:
 
-Traditional learning platforms simply store content but do not help
-students understand or organize it effectively.
+* Interprets academic material
+* Structures knowledge
+* Adapts to the student
+* Continuously improves learning outcomes
 
-------------------------------------------------------------------------
+It integrates **Retrieval Augmented Generation (RAG)**, **hybrid search**, and **adaptive learning systems** into a unified academic engine.
 
-# Solution
+---
 
-ExamBud builds an Academic Intelligence Engine capable of:
+## ❌ Problem
 
--   Understanding course materials
--   Answering student questions
--   Generating practice questions
--   Tracking concept mastery
--   Creating personalized study plans
--   Providing academic analytics
+Modern students are overwhelmed, not under-resourced.
 
-Institutions upload course material and ExamBud converts it into a
-structured AI knowledge base.
+Key issues:
 
-------------------------------------------------------------------------
+* Massive volumes of unstructured content (notes, PPTs, recordings)
+* No personalized guidance or adaptive learning
+* Inefficient and reactive study habits
+* Weak conceptual linking between topics
+* Lack of measurable feedback on progress
 
-# Key Features
+Most platforms solve *access*, not *understanding*.
 
-## Universal Knowledge Ingestion
+---
 
-Supports multiple academic formats.
+## ✅ Solution
 
-Documents - PDF - PowerPoint - Word - Text files - CSV
+ExamBud introduces an **Academic Intelligence Engine** that transforms static content into an interactive system.
 
-Multimedia - Images - Audio lectures - Video lectures
+It enables:
 
-Processing tools include PyMuPDF, python‑pptx, Tesseract OCR, Whisper
-transcription, and FFmpeg video processing.
+* Context-aware question answering
+* Automatic knowledge structuring
+* Intelligent practice generation
+* Real-time mastery tracking
+* Adaptive study planning
 
-------------------------------------------------------------------------
+Institutions upload raw course material → ExamBud builds a **searchable, queryable knowledge system**.
 
-## Hybrid Retrieval System
+---
 
-ExamBud combines semantic and keyword retrieval.
+## 🔥 Key Features
 
-User Query\
-↓\
-Query Rewriting\
-↓\
-Vector Search (ChromaDB)\
-↓\
-BM25 Keyword Search\
-↓\
-Result Merging\
-↓\
-Cross Encoder Reranking\
-↓\
-Context Retrieval
+---
 
-------------------------------------------------------------------------
+### 📥 Universal Knowledge Ingestion
 
-## Retrieval Augmented Generation
+Handles diverse academic inputs and converts them into structured knowledge.
 
-Query + Retrieved Context → Language Model → Answer + Sources
+**Supported Formats**
 
-Supported models include FLAN‑T5 (local), OpenAI, Claude, and Mistral.
+* PDF, PPT, Word, TXT, CSV
+* Images (via OCR)
+* Audio & video lectures
 
-------------------------------------------------------------------------
+**Processing Pipeline**
 
-## Personalized Study Planner
+* PyMuPDF → document parsing
+* python-pptx → slide extraction
+* Tesseract OCR → text from images
+* Whisper → speech-to-text
+* FFmpeg → video preprocessing
 
-ExamBud automatically generates structured study schedules using:
+**Frontend Experience**
 
--   exam dates
--   student mastery levels
--   concept difficulty
--   topic dependencies
--   available study hours
+* Drag-and-drop uploads
+* Live file previews
+* Auto-generated summaries as cards
+* Inline highlighting + annotation
+* Lecture timeline synced with transcripts
 
-------------------------------------------------------------------------
+---
 
-## Practice and Exam Generation
+### 🔍 Hybrid Retrieval System
 
-ExamBud can generate:
+Combines **semantic understanding + keyword precision** for accurate retrieval.
 
--   MCQs
--   conceptual questions
--   short answer questions
--   full mock exams
+```
+User Query
+↓
+Query Rewriting
+↓
+Vector Search (ChromaDB)
+↓
+BM25 Keyword Search
+↓
+Result Merging
+↓
+Cross-Encoder Reranking
+↓
+Final Context
+```
 
-Answers update concept mastery scores.
+**Why this matters**
 
-------------------------------------------------------------------------
+* Semantic search alone misses exact terms
+* Keyword search alone lacks understanding
+  → Hybrid = best of both
 
-# System Architecture Overview
+**Frontend Experience**
 
-Student Interface\
-↓\
-FastAPI Backend\
-↓\
-Academic Intelligence Engine\
-↓\
-Hybrid Retrieval System\
-↓\
-Vector Database (ChromaDB)\
-↓\
-Language Model Generation
+* Smart search bar with real-time suggestions
+* Query refinement and correction
+* Filters (subject / topic / difficulty)
+* Split interface:
 
-------------------------------------------------------------------------
-## Documentation
+  * Left → source documents
+  * Right → AI response
+* Highlighted matches in content
 
-Detailed backend documentation:
+---
 
-- [Backend Architecture](docs/BACKEND_ARCHITECTURE.md)
-- [Backend Features](docs/BACKEND_FEATURES.md)
+### 🤖 Retrieval Augmented Generation (RAG)
 
--------------------------------------------------------------------------
+Ensures answers are **accurate, grounded, and explainable**.
+
+```
+Query + Context → LLM → Answer + Sources
+```
+
+**Supported Models**
+
+* FLAN-T5 (local inference)
+* OpenAI
+* Claude
+* Mistral
+
+**Capabilities**
+
+* Context-aware responses
+* Source-backed answers
+* Reduced hallucination
+
+**Frontend Experience**
+
+* Chat-based assistant
+* Explanation modes:
+
+  * Quick answer
+  * Exam-ready
+  * Deep explanation
+* Follow-up question suggestions
+* Save to notes / revision list
+
+---
+
+### 📅 Personalized Study Planner
+
+Generates adaptive schedules based on multiple factors.
+
+**Inputs**
+
+* Exam deadlines
+* Concept mastery
+* Topic difficulty
+* Dependency graphs
+* Available study time
+
+**System Behavior**
+
+* Prioritizes weak + high-impact topics
+* Adjusts schedule dynamically
+* Balances workload intelligently
+
+**Frontend Experience**
+
+* Task cards with status:
+
+  * Completed
+  * In Progress
+  * Incomplete
+  * Deferred
+* Daily “Today Focus” panel
+* Smart rescheduling on missed tasks
+* Visual workload distribution
+
+---
+
+### 📝 Practice & Exam Generation
+
+Transforms knowledge into **active learning loops**.
+
+**Generated Content**
+
+* MCQs
+* Conceptual questions
+* Short answers
+* Full-length mock exams
+
+**Evaluation System**
+
+* Tracks accuracy
+* Updates mastery scores
+* Identifies weak areas
+
+**Frontend Experience**
+
+* Exam simulator (timed interface)
+* Instant feedback with explanations
+* Performance analytics dashboard
+* Retry weak topics
+* Adaptive difficulty progression
+
+---
+
+### 📊 Academic Dashboard & Progress Visualization
+
+Turns abstract learning into **visual feedback**.
+
+**Core Elements**
+
+* Radial mastery gauges per subject
+* Color-coded performance levels
+* Central focus module
+* Integrated study timer
+
+**Why it works**
+
+* Immediate feedback → higher engagement
+* Visual progress → motivation
+* Time tracking → discipline
+
+---
+
+### 🎯 Navigation & UX Design
+
+Built for **focus, speed, and engagement**.
+
+**Design System**
+
+* Dark theme (low eye strain)
+* Glassmorphism UI elements
+* Smooth micro-interactions
+
+**Navigation**
+
+* Sidebar / icon-based quick access
+* Sections:
+
+  * Dashboard
+  * Tasks
+  * Calendar
+  * Notes
+  * Profile
+  * Settings
+
+**Experience Goals**
+
+* Zero friction navigation
+* High visual clarity
+* Continuous engagement
+
+---
+
+## 🏗️ System Architecture
+
+```
+Student Interface
+        ↓
+FastAPI Backend
+        ↓
+Academic Intelligence Engine
+        ↓
+Hybrid Retrieval System
+        ↓
+Vector Database (ChromaDB)
+        ↓
+Language Model (LLM Layer)
+```
+
+---
+
+## 🧠 Core Technologies
+
+* FastAPI (backend)
+* ChromaDB (vector storage)
+* BM25 (keyword retrieval)
+* Cross-Encoder (reranking)
+* LLM APIs (OpenAI / Claude / Mistral)
+* Whisper + OCR pipelines
+
+---
+
+## 📚 Documentation
+
+* Backend Architecture → docs/BACKEND_ARCHITECTURE.md
+* Backend Features → docs/BACKEND_FEATURES.md
+
+---
+
+## 🧠 Vision
+
+ExamBud aims to evolve into a **complete academic intelligence system**:
+
+* Understands how students learn
+* Adapts in real-time
+* Optimizes study efficiency
+* Improves academic performance at scale
+
+---
+
+## ⭐ Why ExamBud
+
+Most platforms:
+→ store content
+
+ExamBud:
+→ understands, organizes, and teaches
+
+---
 © 2026 ExamBud. All rights reserved.
