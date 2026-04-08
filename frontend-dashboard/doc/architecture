@@ -1,0 +1,152 @@
+
+---
+
+## 🏗️ Frontend Architecture
+
+The ExamBud frontend is designed as a modular, component-driven system focused on performance, scalability, and real-time interactivity.
+
+It acts as the interaction layer between the user and the Academic Intelligence Engine.
+
+---
+
+### 🔧 Core Stack
+
+* **Framework**: React (component-based architecture)
+* **Styling**: CSS / Tailwind (utility-first styling + glassmorphism UI)
+* **State Management**: React state + context (for global data like user, tasks, progress)
+* **API Communication**: REST APIs via Axios / Fetch
+* **Routing**: Client-side routing for seamless navigation
+
+---
+
+### 🧩 Component Architecture
+
+The UI is structured into reusable, independent components:
+
+* **Dashboard Components**
+
+  * Progress Gauges
+  * Study Timer
+  * Active Focus Module
+
+* **Task System**
+
+  * Task Cards
+  * Status Indicators
+  * Task Lists
+
+* **Navigation**
+
+  * Floating Taskbar
+  * Page Routing
+
+* **AI Interaction**
+
+  * Chat Interface
+  * Response Display
+  * Source Viewer
+
+Each component is:
+
+* Isolated
+* Reusable
+* State-aware
+
+---
+
+### 🔄 Data Flow
+
+Frontend follows a predictable data flow:
+
+```
+User Interaction
+↓
+Component State Update
+↓
+API Request (FastAPI Backend)
+↓
+Response Handling
+↓
+UI Re-render
+```
+
+---
+
+### 📡 API Integration
+
+The frontend communicates with the backend using REST APIs:
+
+* Fetch study plans
+* Retrieve AI-generated responses
+* Submit answers for evaluation
+* Update task and mastery data
+
+All responses are dynamically reflected in the UI.
+
+---
+
+### ⚡ State Management Strategy
+
+* **Local State** → UI-specific interactions (hover, toggles, inputs)
+* **Global State** →
+
+  * User progress
+  * Tasks
+  * Study sessions
+  * Mastery levels
+
+Ensures:
+
+* Minimal re-renders
+* Efficient updates
+* Consistent UI state
+
+---
+
+### ⏱️ Real-Time UI Updates
+
+The frontend is designed for dynamic feedback:
+
+* Timer updates every second
+* Task status reflects instantly
+* Progress gauges animate based on performance
+* Dashboard responds to user actions in real-time
+
+---
+
+### 🎨 UI/UX Architecture
+
+* **Design System**
+
+  * Dark theme
+  * Glassmorphism components
+  * Consistent spacing and typography
+
+* **Interaction Design**
+
+  * Micro-animations for feedback
+  * Smooth transitions between states
+  * Minimal cognitive load
+
+---
+
+### 🔥 Key Design Goals
+
+* Fast and responsive interface
+* Minimal navigation friction
+* High visual clarity
+* Real-time feedback
+* Scalable component system
+
+---
+
+### 🧠 Summary
+
+The frontend is built as a **reactive, component-driven system** that:
+
+* Translates backend intelligence into usable UI
+* Maintains real-time interactivity
+* Ensures a smooth and engaging learning experience
+
+---
+
